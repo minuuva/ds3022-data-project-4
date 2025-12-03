@@ -8,8 +8,8 @@ app = Chalice(app_name='s3-events')
 app.debug = True
 
 # Set the values in the .chalice/config.json file.
-S3_BUCKET = os.environ.get('APP_BUCKET_NAME', '')
-DYNAMODB_TABLE_NAME = os.environ.get('DYNAMODB_TABLE_NAME', '')
+S3_BUCKET = os.environ.get('APP_BUCKET_NAME', 'qce2dp-access')
+DYNAMODB_TABLE_NAME = os.environ.get('DYNAMODB_TABLE_NAME', 'access')
 
 @app.on_s3_event(bucket=S3_BUCKET, events=['s3:ObjectCreated:*'], suffix='.json')
 def s3_handler(event):
